@@ -47,21 +47,10 @@ h3 {
   width: 50%;
 }
 
-.forecast {
-  width: 75%;
-}
-
 .forecast__day {
-  display: inline-block;
-  width: 14.28%;
   text-align: center;
   vertical-align: top;
   margin-bottom: 10px;
-}
-
-.forecast__today {
-  display: block;
-  width: 75%;
 }
 
 .forecast__day__header {

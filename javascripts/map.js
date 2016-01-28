@@ -118,7 +118,7 @@ function displayForecast(forecast) {
   //create parent div for forecast
   var forecastDiv = document.createElement('div');
   forecastDiv.id = "forecast";
-  forecastDiv.className = "forecast";
+  forecastDiv.className = "forecast container-fluid";
 
   var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   var date = new Date();
@@ -134,13 +134,13 @@ function displayForecast(forecast) {
 
     //create div for day
     var dayDiv = document.createElement('div');
-    dayDiv.className = "forecast__day";
+    dayDiv.className = "forecast__day col-md-1";
 
     //create header for forecast day name
     if(i==0) {
       dayHeader = createHeader('h2',"Today");
       dayHeader.className = "forecast__day__header forecast__today__header";
-      dayDiv.className += " forecast__today";
+      dayDiv.className += " forecast__today col-md-7";
     } else {
       dayHeader = createHeader('h3',currentDayName);
       dayHeader.className = "forecast__day__header";
