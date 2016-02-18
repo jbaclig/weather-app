@@ -17,6 +17,14 @@
 // Import Bootstrap for Sass
 @import "bootstrap";
 
+//weather icon colors
+
+$sun-color: #FFA500;
+$moon-color: #DCCCFF;
+$cloud-color: #CCCCCC;
+$rain-color: #82B2E4;
+$snow-color: #ACD3F3;
+
 @font-face {
    font-family: "iconvault";
    src: url("../fonts/iconvault_forecastfont.eot");
@@ -62,12 +70,111 @@ h3 {
 }
 
 //weather icons
+.icon {
+  font-size: 7.0rem;
+  position: relative;
+  height: 100px;
+}
 
-.icon-sun::after {
+.clear-day::after {
   font-family: "iconvault";
   content: "\f113";
-  color: rgb(255,165,0);
+  color: $sun-color;
 }
+
+.fog::after {
+  font-family: "iconvault";
+  content: "\f108";
+  color: $cloud-color;
+}
+
+.cloudy::after {
+  font-family: "iconvault";
+  content: "\f106";
+  color: $cloud-color;
+}
+
+.clear-night::after {
+  font-family: "iconvault";
+  content: "\f10d";
+  color: $moon-color;
+}
+
+.base-cloud::before {
+  font-family: "iconvault";
+  content: "\f105";
+  color: $cloud-color;
+  position: absolute;
+  right: 25%;
+}
+
+.partly-cloudy::before {
+  font-family: "iconvault";
+  content: "\f106";
+  color: $cloud-color;
+  position: absolute;
+  right: 25%;
+}
+
+.rain::before {
+  font-family: "iconvault";
+  content: "\f104";
+  color: $rain-color;
+  position: absolute;
+  right: 24%;
+}
+
+.snow::before {
+  font-family: "iconvault";
+  content: "\f10b";
+  color: $snow-color;
+  position: absolute;
+  right: 24%;
+}
+
+.sleet::before {
+  font-family: "iconvault";
+  content: "\f10c";
+  color: $snow-color;
+  position: absolute;
+  right: 25%;
+}
+
+.wind::before {
+  font-family: "iconvault";
+  content: "\f115";
+  color: $cloud-color;
+  position: absolute;
+  right: 25%;
+}
+
+.day::after {
+  font-family: "iconvault";
+  content: "\f101";
+  color: $sun-color;
+  position: absolute;
+  right: 21%;
+}
+
+.night::after {
+  font-family: "iconvault";
+  content: "\f100";
+  color: $moon-color;
+  position: absolute;
+  right: 21%;
+}
+
+.forecast__today {
+  .base-cloud::before, .rain::before, .snow::before, .sleet::before,
+  .partly-cloudy::before, .wind::before {
+    right: 47%;
+  }
+
+  .day::after, .night::after {
+    right: 46.5%;
+  }
+}
+
 
 .forecast__day {
   text-align: center;

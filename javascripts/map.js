@@ -147,19 +147,67 @@ function displayForecast(forecast) {
     }
 
     //create object for forecast data
+    var data = forecastData[i];
     var dayDataDiv = document.createElement('div');
     dayDataDiv.className = "forecast__day__data";
 
+    //forecast icon
     var iconContainer = document.createElement('ul');
+    iconContainer.className = "icon";
+    var iconDescription = data.icon;
+
+    var iconHtml;
+    switch(iconDescription) {
+      case "clear-day":
+            iconHtml = "<li class=\"clear-day\"></li>";
+            break;
+      case "clear-night":
+            iconHtml = "<li class=\"clear-night\"></li>";
+            break;
+      case "rain":
+            iconHtml = "<li class=\"base-cloud\"></li><li class=\"rain\"></li>";
+            break;
+      case "snow":
+            iconHtml = "<li class=\"base-cloud\"></li><li class=\"snow\"></li>";
+            break;
+      case "sleet":
+            iconHtml = "<li class=\"base-cloud\"></li><li class=\"sleet\"></li>";
+            break;
+      case "wind":
+            iconHtml = "<li class=\"base-cloud\"><li class=\"wind\"></li>";
+            break;
+      case "fog":
+            iconHtml = "<li class=\"fog\"></li>";
+            break;
+      case "cloudy":
+            iconHtml = "<li class=\"cloudy\"></li>";
+            break;
+      case "partly-cloudy-day":
+            iconHtml = "<li class=\"partly-cloudy\"></li><li class=\"day\"></li>";
+            break;
+      case "partly-cloudy-night":
+            iconHtml = "<li class=\"partly-cloudy\"></li><li class=\"night\"></li>";
+            break;
+    }
+    iconContainer.innerHTML = iconHtml;
     var icon = document.createElement('li');
-    icon.className = "icon-sun";
+    icon.className = data;
+
+    //high and low temps
+    var tempHigh = document.createElement('p');
+    tempHigh.innerHTML = data.temperatureMax;
+
+    var tempLow = document.createElement('p');
+    tempLow.innerHTML = data.temperatureMin;
 
     //weather summary
     var daySummary = document.createElement('p');
-    daySummary.innerHTML= forecastData[i].summary;
+    daySummary.innerHTML= data.summary;
 
     iconContainer.appendChild(icon);
     dayDataDiv.appendChild(iconContainer);
+    dayDataDiv.appendChild(tempHigh);
+    dayDataDiv.appendChild(tempLow);
     dayDataDiv.appendChild(daySummary);
 
     dayDiv.appendChild(dayHeader);
