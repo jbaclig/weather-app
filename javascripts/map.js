@@ -149,9 +149,16 @@ function displayForecast(forecast) {
     //create object for forecast data
     var dayDataDiv = document.createElement('div');
     dayDataDiv.className = "forecast__day__data";
-    var dayData = document.createElement('p');
-    dayData.innerHTML= forecastData[i].summary;
-    dayDataDiv.appendChild(dayData);
+
+    var icon = document.createElement('span');
+    icon.className = "glyphicon glyphicon-search";
+
+    //weather summary
+    var daySummary = document.createElement('p');
+    daySummary.innerHTML= forecastData[i].summary;
+
+    dayDataDiv.appendChild(icon);
+    dayDataDiv.appendChild(daySummary);
 
     dayDiv.appendChild(dayHeader);
     dayDiv.appendChild(dayDataDiv);
