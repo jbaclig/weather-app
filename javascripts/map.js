@@ -195,10 +195,10 @@ function displayForecast(forecast) {
 
     //high and low temps
     var tempHigh = document.createElement('p');
-    tempHigh.innerHTML = data.temperatureMax;
+    tempHigh.innerHTML = data.temperatureMax + "&deg;";
 
     var tempLow = document.createElement('p');
-    tempLow.innerHTML = data.temperatureMin;
+    tempLow.innerHTML = data.temperatureMin + "&deg;";
 
     //weather summary
     var daySummary = document.createElement('p');
