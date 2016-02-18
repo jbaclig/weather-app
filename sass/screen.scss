@@ -11,8 +11,22 @@
 // Import custom Bootstrap variables
 @import "bootstrap-variables";
 
+@import "skeleton.css";
+@import "base.css";
+
 // Import Bootstrap for Sass
 @import "bootstrap";
+
+@font-face {
+   font-family: "iconvault";
+   src: url("../fonts/iconvault_forecastfont.eot");
+   src: url("../fonts/iconvault_forecastfont.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/iconvault_forecastfont.woff") format("woff"),
+        url("../fonts/iconvault_forecastfont.ttf") format("truetype"),
+        url("../fonts/iconvault_forecastfont.svg#iconvault") format("svg");
+   font-weight: normal;
+   font-style: normal;
+ }
 
 html, body {
   height: 100%;
@@ -45,6 +59,14 @@ h3 {
 #map {
   height: 50%;
   width: 50%;
+}
+
+//weather icons
+
+.icon-sun::after {
+  font-family: "iconvault";
+  content: "\f113";
+  color: rgb(255,165,0);
 }
 
 .forecast__day {
