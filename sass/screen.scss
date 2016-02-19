@@ -66,8 +66,11 @@ h3 {
 
 #map {
   height: 50%;
-  width: 50%;
-  margin-bottom: 30px;
+  width: 70%;
+}
+
+#forecast, #map {
+  margin-bottom: 40px;
 }
 
 //weather icons

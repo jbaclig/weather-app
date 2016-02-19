@@ -8506,46 +8506,50 @@ h3 {
 /* line 67, ../sass/screen.scss */
 #map {
   height: 50%;
-  width: 50%;
-  margin-bottom: 30px;
+  width: 70%;
 }
 
-/* line 74, ../sass/screen.scss */
+/* line 72, ../sass/screen.scss */
+#forecast, #map {
+  margin-bottom: 40px;
+}
+
+/* line 77, ../sass/screen.scss */
 .icon {
   font-size: 7.0rem;
   position: relative;
   height: 100px;
 }
 
-/* line 80, ../sass/screen.scss */
+/* line 83, ../sass/screen.scss */
 .clear-day::after {
   font-family: "iconvault";
   content: "\f113";
   color: #FFA500;
 }
 
-/* line 86, ../sass/screen.scss */
+/* line 89, ../sass/screen.scss */
 .fog::after {
   font-family: "iconvault";
   content: "\f108";
   color: #CCCCCC;
 }
 
-/* line 92, ../sass/screen.scss */
+/* line 95, ../sass/screen.scss */
 .cloudy::after {
   font-family: "iconvault";
   content: "\f106";
   color: #CCCCCC;
 }
 
-/* line 98, ../sass/screen.scss */
+/* line 101, ../sass/screen.scss */
 .clear-night::after {
   font-family: "iconvault";
   content: "\f10d";
   color: #DCCCFF;
 }
 
-/* line 104, ../sass/screen.scss */
+/* line 107, ../sass/screen.scss */
 .base-cloud::before {
   font-family: "iconvault";
   content: "\f105";
@@ -8554,7 +8558,7 @@ h3 {
   right: 25%;
 }
 
-/* line 112, ../sass/screen.scss */
+/* line 115, ../sass/screen.scss */
 .partly-cloudy::before {
   font-family: "iconvault";
   content: "\f106";
@@ -8563,7 +8567,7 @@ h3 {
   right: 25%;
 }
 
-/* line 120, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
 .rain::before {
   font-family: "iconvault";
   content: "\f104";
@@ -8572,7 +8576,7 @@ h3 {
   right: 24%;
 }
 
-/* line 128, ../sass/screen.scss */
+/* line 131, ../sass/screen.scss */
 .snow::before {
   font-family: "iconvault";
   content: "\f10b";
@@ -8581,7 +8585,7 @@ h3 {
   right: 24%;
 }
 
-/* line 136, ../sass/screen.scss */
+/* line 139, ../sass/screen.scss */
 .sleet::before {
   font-family: "iconvault";
   content: "\f10c";
@@ -8590,7 +8594,7 @@ h3 {
   right: 25%;
 }
 
-/* line 144, ../sass/screen.scss */
+/* line 147, ../sass/screen.scss */
 .wind::before {
   font-family: "iconvault";
   content: "\f115";
@@ -8599,7 +8603,7 @@ h3 {
   right: 25%;
 }
 
-/* line 152, ../sass/screen.scss */
+/* line 155, ../sass/screen.scss */
 .day::after {
   font-family: "iconvault";
   content: "\f101";
@@ -8608,7 +8612,7 @@ h3 {
   right: 21%;
 }
 
-/* line 160, ../sass/screen.scss */
+/* line 163, ../sass/screen.scss */
 .night::after {
   font-family: "iconvault";
   content: "\f100";
@@ -8617,29 +8621,29 @@ h3 {
   right: 21%;
 }
 
-/* line 169, ../sass/screen.scss */
+/* line 172, ../sass/screen.scss */
 .forecast__today .base-cloud::before, .forecast__today .rain::before, .forecast__today .snow::before, .forecast__today .sleet::before,
 .forecast__today .partly-cloudy::before, .forecast__today .wind::before {
   right: 47%;
 }
-/* line 174, ../sass/screen.scss */
+/* line 177, ../sass/screen.scss */
 .forecast__today .day::after, .forecast__today .night::after {
   right: 46.5%;
 }
 
-/* line 180, ../sass/screen.scss */
+/* line 183, ../sass/screen.scss */
 .forecast__day {
   text-align: center;
   vertical-align: top;
   margin-bottom: 10px;
 }
 
-/* line 186, ../sass/screen.scss */
+/* line 189, ../sass/screen.scss */
 .forecast__day__header {
   text-align: center;
 }
 
-/* line 190, ../sass/screen.scss */
+/* line 193, ../sass/screen.scss */
 .forecast__day__data {
   font-size: 1.8rem;
 }
