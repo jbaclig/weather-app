@@ -83,7 +83,7 @@ function initMap() {
       var latLng = bounds.getCenter();
       var lat = latLng.lat();
       var lng = latLng.lng();
-      $('#forecast').remove();
+      $('#forecast').hide('slow',function(){ $('#forecast').remove(); });
       getForecast(lat,lng);
     });
     map.fitBounds(bounds);
@@ -118,7 +118,7 @@ function displayForecast(forecast) {
   //create parent div for forecast
   var forecastDiv = document.createElement('div');
   forecastDiv.id = "forecast";
-  forecastDiv.className = "forecast container-fluid";
+  forecastDiv.className = "forecast container-fluid animated fadeIn";
 
   var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   var date = new Date();
@@ -159,34 +159,34 @@ function displayForecast(forecast) {
     var iconHtml;
     switch(iconDescription) {
       case "clear-day":
-            iconHtml = "<li class=\"clear-day\"></li>";
+            iconHtml = "<li class=\"clear-day animated rotateIn\"></li>";
             break;
       case "clear-night":
-            iconHtml = "<li class=\"clear-night\"></li>";
+            iconHtml = "<li class=\"clear-night animated pulse\"></li>";
             break;
       case "rain":
-            iconHtml = "<li class=\"base-cloud\"></li><li class=\"rain\"></li>";
+            iconHtml = "<li class=\"base-cloud\"></li><li class=\"rain animated rubberBand\"></li>";
             break;
       case "snow":
-            iconHtml = "<li class=\"base-cloud\"></li><li class=\"snow\"></li>";
+            iconHtml = "<li class=\"base-cloud\"></li><li class=\"snow animated flip\"></li>";
             break;
       case "sleet":
-            iconHtml = "<li class=\"base-cloud\"></li><li class=\"sleet\"></li>";
+            iconHtml = "<li class=\"base-cloud\"></li><li class=\"sleet animated swing\"></li>";
             break;
       case "wind":
-            iconHtml = "<li class=\"base-cloud\"><li class=\"wind\"></li>";
+            iconHtml = "<li class=\"base-cloud\"><li class=\"wind animated shake\"></li>";
             break;
       case "fog":
-            iconHtml = "<li class=\"fog\"></li>";
+            iconHtml = "<li class=\"fog animated jello\"></li>";
             break;
       case "cloudy":
-            iconHtml = "<li class=\"cloudy\"></li>";
+            iconHtml = "<li class=\"cloudy animated fadeInLeft\"></li>";
             break;
       case "partly-cloudy-day":
-            iconHtml = "<li class=\"partly-cloudy\"></li><li class=\"day\"></li>";
+            iconHtml = "<li class=\"partly-cloudy\"></li><li class=\"day animated wobble\"></li>";
             break;
       case "partly-cloudy-night":
-            iconHtml = "<li class=\"partly-cloudy\"></li><li class=\"night\"></li>";
+            iconHtml = "<li class=\"partly-cloudy\"></li><li class=\"night animated wobble\"></li>";
             break;
     }
     iconContainer.innerHTML = iconHtml;
@@ -213,8 +213,9 @@ function displayForecast(forecast) {
     dayDiv.appendChild(dayHeader);
     dayDiv.appendChild(dayDataDiv);
     forecastDiv.appendChild(dayDiv);
+    $('body').append(forecastDiv);
   }
-  $('body').append(forecastDiv);
+  scrollToForecast();
 }
 
 function createHeader(headerType,content){
@@ -223,4 +224,14 @@ function createHeader(headerType,content){
   h.innerHTML = content;
   header.appendChild(h);
   return header;
+}
+
+function scrollToForecast(){
+  $('html, body').animate({
+    scrollTop: $('#forecast').offset().top
+  },500);
+}
+
+function fadeOut(element){
+  $(element).removeClass("fadeIn").addClass("fadeOut");
 }
