@@ -15,20 +15,30 @@ function initMap() {
   map.addListener('bounds_changed',function(){
     searchBox.setBounds(map.getBounds());
   });
-
+  var marker;
+  var placeName;
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position){
       var pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+      var geocoder = new google.maps.Geocoder;
+      geocoder.geocode({'location': pos}, function(results, status){
+        if(status === google.maps.GeocoderStatus.OK) {
+          if(results[0]) {
+            placeName = results[0].formatted_address;
+          }
+        }
+      });
 
-      var marker = new google.maps.Marker({
+      marker = new google.maps.Marker({
         position: pos,
         map: map
       });
       map.setCenter(pos);
-      getForecast (pos.lat,pos.lng);
+      alert("geocode place name: " + placeName);
+      getForecast (pos.lat,pos.lng,placeName);
     }, function(){
       handleLocationError(true,map.getCenter());
     });
@@ -36,7 +46,8 @@ function initMap() {
     handleLocationError(false,map.getCenter());
   }
 
-  var markers = [];
+  //var markers = [];
+  marker = null;
   // [START region_getplaces]
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
@@ -47,44 +58,36 @@ function initMap() {
       return;
     }
 
+    var place = places[0];
     //Clear out old markers
-    markers.forEach(function(marker) {
-      marker.setMap(null);
-    });
-    markers = [];
+    marker.setMap(null);
+    marker = null;
 
     //For each place, get the icon, name, and location
     var bounds = new google.maps.LatLngBounds();
-    places.forEach(function(place) {
-      var icon = {
-        url: place.icon,
-        size: new google.maps.Size(71,71),
-        origin: new google.maps.Point(0,0),
-        anchor: new google.maps.Point(17,34),
-        scaledSize: new google.maps.Size(25,25)
-      };
 
-      //Create a marker for each place
-      markers.push(new google.maps.Marker({
-        map: map,
-        title: place.name,
-        position: place.geometry.location
-      }));
-
-      if(place.geometry.viewport) {
-        //Only geocodes have viewport
-        bounds.union(place.geometry.viewport);
-      } else {
-        bounds.extend(place.geometry.location)
-      }
-
-      //Update forecast info
-      var latLng = bounds.getCenter();
-      var lat = latLng.lat();
-      var lng = latLng.lng();
-      $('#forecast').hide('slow',function(){ $('#forecast').remove(); });
-      getForecast(lat,lng);
+    //Create a marker for each place
+    marker = new google.maps.Marker({
+      map: map,
+      title: place.name,
+      position: place.geometry.location
     });
+
+    if(place.geometry.viewport) {
+      //Only geocodes have viewport
+      bounds.union(place.geometry.viewport);
+    } else {
+      bounds.extend(place.geometry.location);
+    }
+
+    placeName = place.name;
+    //Update forecast info
+    var latLng = bounds.getCenter();
+    var lat = latLng.lat();
+    var lng = latLng.lng();
+    $('#forecast').hide('slow',function(){ $('#forecast').remove(); });
+    getForecast(lat,lng,placeName);
+
     map.fitBounds(bounds);
   });
   //[END region_getplaces]
@@ -96,7 +99,7 @@ function handleLocationError(browserHasGeolocation,pos) {
                         'Error: Your browser doesn\'t support geolocation.');
 }
 
-function getForecast(lat,lng) {
+function getForecast(lat,lng,placeName) {
   var forecastUrl = "https://api.forecast.io/forecast/db0083fb66a7977addddf573bca4f465/"+lat+","+lng;
 
   $.ajax({
@@ -104,7 +107,7 @@ function getForecast(lat,lng) {
     url: forecastUrl,
     dataType: 'jsonp',
     success: function(forecast) {
-      displayForecast(forecast);
+      displayForecast(forecast,placeName);
     },
     error: function() {
       alert("error getting forecast");
@@ -112,16 +115,16 @@ function getForecast(lat,lng) {
   });
 }
 
-function displayForecast(forecast) {
+function displayForecast(forecast,placeName) {
   //create parent div for forecast
   var forecastDiv = document.createElement('div');
   forecastDiv.id = "forecast";
   forecastDiv.className = "forecast container-fluid text-center animated fadeIn";
 
-  var location = document.getElementById('pac-input').value;
-  if(!location) {
+  var location = placeName;
+  /*if(!location) {
     location = "Your Location";
-  }
+  }*/
 
   var locationHeader = document.createElement('h1');
   locationHeader.innerHTML = location;
