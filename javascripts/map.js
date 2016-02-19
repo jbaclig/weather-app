@@ -16,8 +16,6 @@ function initMap() {
     searchBox.setBounds(map.getBounds());
   });
 
-  var infoWindow = new google.maps.InfoWindow({map: map});
-
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position){
       var pos = {
@@ -25,15 +23,17 @@ function initMap() {
         lng: position.coords.longitude
       };
 
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
+      var marker = new google.maps.Marker({
+        position: pos,
+        map: map
+      });
       map.setCenter(pos);
       getForecast (pos.lat,pos.lng);
     }, function(){
-      handleLocationError(true,infoWindow,map.getCenter());
+      handleLocationError(true,map.getCenter());
     });
   } else {
-    handleLocationError(false,infoWindow,map.getCenter());
+    handleLocationError(false,map.getCenter());
   }
 
   var markers = [];
@@ -67,7 +67,6 @@ function initMap() {
       //Create a marker for each place
       markers.push(new google.maps.Marker({
         map: map,
-        icon: icon,
         title: place.name,
         position: place.geometry.location
       }));
@@ -91,9 +90,8 @@ function initMap() {
   //[END region_getplaces]
 }
 
-function handleLocationError(browserHasGeolocation,infoWindow,pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
+function handleLocationError(browserHasGeolocation,pos) {
+  alert(browserHasGeolocation ?
                         'Error: The Geolocation service failed.' :
                         'Error: Your browser doesn\'t support geolocation.');
 }
@@ -118,7 +116,16 @@ function displayForecast(forecast) {
   //create parent div for forecast
   var forecastDiv = document.createElement('div');
   forecastDiv.id = "forecast";
-  forecastDiv.className = "forecast container-fluid animated fadeIn";
+  forecastDiv.className = "forecast container-fluid text-center animated fadeIn";
+
+  var location = document.getElementById('pac-input').value;
+  if(!location) {
+    location = "Your Location";
+  }
+
+  var locationHeader = document.createElement('h1');
+  locationHeader.innerHTML = location;
+  forecastDiv.appendChild(locationHeader);
 
   var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   var date = new Date();
