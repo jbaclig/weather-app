@@ -4,13 +4,14 @@ function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
     zoom: 10,
-    disableDoubleClickZoom: true
+    disableDoubleClickZoom: true,
+    scrollwheel: false
   });
 
   //Creat search box and link to UI element
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
 
   //Bias the SearchBox results towards current map's viewport
   map.addListener('bounds_changed',function(){

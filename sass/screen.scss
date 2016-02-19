@@ -65,15 +65,20 @@ h3 {
 }
 
 #map {
-  height: 50%;
-  width: 70%;
+  height: 100%;
+  width: 100%;
 }
 
 #forecast, #map {
   margin-bottom: 40px;
 }
 
+//map
 
+#pac-input {
+  margin-top: 10px;
+  @include box-shadow(0 2px 6px rgba(0, 0, 0, 0.3))
+}
 
 //weather icons
 .icon {
