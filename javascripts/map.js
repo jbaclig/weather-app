@@ -16,8 +16,8 @@ function initMap() {
     searchBox.setBounds(map.getBounds());
   });
   var marker;
-  var placeName;
   if(navigator.geolocation) {
+    var placeName;
     navigator.geolocation.getCurrentPosition(function(position){
       var pos = {
         lat: position.coords.latitude,
@@ -26,19 +26,21 @@ function initMap() {
       var geocoder = new google.maps.Geocoder;
       geocoder.geocode({'location': pos}, function(results, status){
         if(status === google.maps.GeocoderStatus.OK) {
-          if(results[0]) {
-            placeName = results[0].formatted_address;
+          //alert("geocoder status OK");
+          if(results[1]) {
+            //alert("results[1] exists.")
+            placeName = results[1].formatted_address;
           }
         }
+        marker = new google.maps.Marker({
+          position: pos,
+          map: map
+        });
+        map.setCenter(pos);
+        //alert("geocode place name: " + placeName);
+        getForecast (pos.lat,pos.lng,placeName);
       });
 
-      marker = new google.maps.Marker({
-        position: pos,
-        map: map
-      });
-      map.setCenter(pos);
-      alert("geocode place name: " + placeName);
-      getForecast (pos.lat,pos.lng,placeName);
     }, function(){
       handleLocationError(true,map.getCenter());
     });
