@@ -228,6 +228,7 @@ function displayForecast(forecast,placeName) {
     $('body').append(forecastDiv);
   }
   scrollToForecast();
+  document.getElementById('pac-input').value = "";
 }
 
 function createHeader(headerType,content){
