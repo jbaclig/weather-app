@@ -3,7 +3,8 @@ var map;
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
-    zoom: 8
+    zoom: 10,
+    disableDoubleClickZoom: true
   });
 
   //Creat search box and link to UI element
@@ -16,6 +17,9 @@ function initMap() {
     searchBox.setBounds(map.getBounds());
   });
   var marker;
+
+  //GEOLOCATION
+  //get user's current location and create forecast
   if(navigator.geolocation) {
     var placeName;
     navigator.geolocation.getCurrentPosition(function(position){
@@ -23,12 +27,12 @@ function initMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+
+      //reverse geolocation to get place name
       var geocoder = new google.maps.Geocoder;
       geocoder.geocode({'location': pos}, function(results, status){
         if(status === google.maps.GeocoderStatus.OK) {
-          //alert("geocoder status OK");
           if(results[1]) {
-            //alert("results[1] exists.")
             placeName = results[1].formatted_address;
           }
         }
@@ -37,10 +41,8 @@ function initMap() {
           map: map
         });
         map.setCenter(pos);
-        //alert("geocode place name: " + placeName);
         getForecast (pos.lat,pos.lng,placeName);
       });
-
     }, function(){
       handleLocationError(true,map.getCenter());
     });
@@ -48,11 +50,9 @@ function initMap() {
     handleLocationError(false,map.getCenter());
   }
 
-  //var markers = [];
+  //SEARCHBOX LISTENER
   marker = null;
-  // [START region_getplaces]
-  // Listen for the event fired when the user selects a prediction and retrieve
-  // more details for that place.
+  // move map and get forecast for search box results
   searchBox.addListener('places_changed',function() {
     var places = searchBox.getPlaces();
 
@@ -87,12 +87,38 @@ function initMap() {
     var latLng = bounds.getCenter();
     var lat = latLng.lat();
     var lng = latLng.lng();
-    $('#forecast').hide('slow',function(){ $('#forecast').remove(); });
+    //$('#forecast').hide('slow',function(){ $('#forecast').remove(); });
+    removeForecast();
     getForecast(lat,lng,placeName);
 
     map.fitBounds(bounds);
   });
-  //[END region_getplaces]
+
+  //DOUBLE CLICK LISTENER
+  //move marker to double click area on map and get forecast
+  google.maps.event.addListener(map, 'dblclick', function(event) {
+    marker.setMap(null);
+    marker = null;
+    //alert("event lat, lng: " + event.latLng.lat() + ", " + event.latLng.lng());
+    //reverse geolocation to get place name
+    var latLng = event.latLng;
+    var geocoder = new google.maps.Geocoder;
+    geocoder.geocode({'location': latLng}, function(results, status){
+      if(status === google.maps.GeocoderStatus.OK) {
+        if(results[1]) {
+          placeName = results[1].formatted_address;
+        }
+      }
+      marker = new google.maps.Marker({
+        position: latLng,
+        map: map
+      });
+      map.setCenter(latLng);
+      //$('#forecast').hide('slow',function(){ $('#forecast').remove(); });
+      removeForecast();
+      getForecast(latLng.lat(),latLng.lng(),placeName);
+    });
+  });
 }
 
 function handleLocationError(browserHasGeolocation,pos) {
@@ -103,7 +129,6 @@ function handleLocationError(browserHasGeolocation,pos) {
 
 function getForecast(lat,lng,placeName) {
   var forecastUrl = "https://api.forecast.io/forecast/db0083fb66a7977addddf573bca4f465/"+lat+","+lng;
-
   $.ajax({
     type: 'GET',
     url: forecastUrl,
@@ -123,13 +148,8 @@ function displayForecast(forecast,placeName) {
   forecastDiv.id = "forecast";
   forecastDiv.className = "forecast container-fluid text-center animated fadeIn";
 
-  var location = placeName;
-  /*if(!location) {
-    location = "Your Location";
-  }*/
-
   var locationHeader = document.createElement('h1');
-  locationHeader.innerHTML = location;
+  locationHeader.innerHTML = placeName;
   forecastDiv.appendChild(locationHeader);
 
   var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -225,26 +245,8 @@ function displayForecast(forecast,placeName) {
     dayDiv.appendChild(dayHeader);
     dayDiv.appendChild(dayDataDiv);
     forecastDiv.appendChild(dayDiv);
-    $('body').append(forecastDiv);
+    appendToBody(forecastDiv);
   }
   scrollToForecast();
   document.getElementById('pac-input').value = "";
-}
-
-function createHeader(headerType,content){
-  var header = document.createElement('header');
-  var h = document.createElement(headerType);
-  h.innerHTML = content;
-  header.appendChild(h);
-  return header;
-}
-
-function scrollToForecast(){
-  $('html, body').animate({
-    scrollTop: $('#forecast').offset().top
-  },500);
-}
-
-function fadeOut(element){
-  $(element).removeClass("fadeIn").addClass("fadeOut");
 }
