@@ -145,19 +145,22 @@ function displayForecast(forecast,placeName) {
   //create parent div for forecast
   var forecastDiv = document.createElement('div');
   forecastDiv.id = "forecast";
-  forecastDiv.className = "forecast container-fluid text-center";
+  forecastDiv.className = "forecast container-fluid text-center animated fadeInRight";
 
   var forecastHeaderRow = document.createElement('div');
   forecastHeaderRow.id = "forecast-header";
-  forecastHeaderRow.className="row animated fadeInRight";
+  forecastHeaderRow.className="row";
+  forecastDiv.appendChild(forecastHeaderRow);
 
   var forecastTodayRow = document.createElement('div');
   forecastTodayRow.id = "forecast-today";
-  forecastTodayRow.className = "row animated fadeInRight";
+  forecastTodayRow.className = "row";
+  forecastDiv.appendChild(forecastTodayRow);
 
   var forecast7DayRow = document.createElement('div');
   forecast7DayRow.id = "forecast-7-day";
-  forecast7DayRow.className = "row animated fadeInRight";
+  forecast7DayRow.className = "row";
+  forecastDiv.appendChild(forecast7DayRow);
 
   var locationHeader = document.createElement('h1');
   locationHeader.innerHTML = placeName;
@@ -260,6 +263,7 @@ function displayForecast(forecast,placeName) {
     dayDiv.appendChild(dayHeader);
     dayDiv.appendChild(dayDataDiv);
     parent.appendChild(dayDiv);
+    forecastDiv.appendChild(parent);
     appendToBody(forecastDiv);
   }
   scrollToForecast();
