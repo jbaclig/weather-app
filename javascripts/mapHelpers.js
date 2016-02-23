@@ -18,10 +18,6 @@ function scrollToForecast(){
   },500);
 }
 
-function fadeOut(element){
-  $(element).removeClass("fadeIn").addClass("fadeOut");
-}
-
 function removeForecast(){
   $('#forecast').hide('slow',function(){ $('#forecast').remove(); });
 }

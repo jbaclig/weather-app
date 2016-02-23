@@ -88,7 +88,6 @@ function initMap() {
     var latLng = bounds.getCenter();
     var lat = latLng.lat();
     var lng = latLng.lng();
-    //$('#forecast').hide('slow',function(){ $('#forecast').remove(); });
     removeForecast();
     getForecast(lat,lng,placeName);
 
@@ -100,7 +99,7 @@ function initMap() {
   google.maps.event.addListener(map, 'dblclick', function(event) {
     marker.setMap(null);
     marker = null;
-    //alert("event lat, lng: " + event.latLng.lat() + ", " + event.latLng.lng());
+
     //reverse geolocation to get place name
     var latLng = event.latLng;
     var geocoder = new google.maps.Geocoder;
@@ -115,7 +114,6 @@ function initMap() {
         map: map
       });
       map.setCenter(latLng);
-      //$('#forecast').hide('slow',function(){ $('#forecast').remove(); });
       removeForecast();
       getForecast(latLng.lat(),latLng.lng(),placeName);
     });
@@ -147,17 +145,30 @@ function displayForecast(forecast,placeName) {
   //create parent div for forecast
   var forecastDiv = document.createElement('div');
   forecastDiv.id = "forecast";
-  forecastDiv.className = "forecast container-fluid text-center animated fadeIn";
+  forecastDiv.className = "forecast container-fluid text-center";
+
+  var forecastHeaderRow = document.createElement('div');
+  forecastHeaderRow.id = "forecast-header";
+  forecastHeaderRow.className="row animated fadeInRight";
+
+  var forecastTodayRow = document.createElement('div');
+  forecastTodayRow.id = "forecast-today";
+  forecastTodayRow.className = "row animated fadeInRight";
+
+  var forecast7DayRow = document.createElement('div');
+  forecast7DayRow.id = "forecast-7-day";
+  forecast7DayRow.className = "row animated fadeInRight";
 
   var locationHeader = document.createElement('h1');
   locationHeader.innerHTML = placeName;
-  forecastDiv.appendChild(locationHeader);
+
+  forecastHeaderRow.appendChild(locationHeader);
 
   var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   var date = new Date();
   var today = date.getDay();
   var forecastData = forecast.daily.data;
-
+  var parent;
   for(var i=0;i < forecastData.length;i++){
     //get Name of day
     var currentDay = today+i;
@@ -167,16 +178,19 @@ function displayForecast(forecast,placeName) {
 
     //create div for day
     var dayDiv = document.createElement('div');
-    dayDiv.className = "forecast__day col-md-1";
 
     //create header for forecast day name
     if(i==0) {
       dayHeader = createHeader('h2',"Today");
       dayHeader.className = "forecast__day__header forecast__today__header";
-      dayDiv.className += " forecast__today col-md-7";
-    } else {
+      dayDiv.className = " forecast__today col-md-3 col-md-offset-2";
+      parent = forecastTodayRow;
+    }
+    else {
       dayHeader = createHeader('h3',currentDayName);
       dayHeader.className = "forecast__day__header";
+      dayDiv.className = "forcast__day col-md-1";
+      parent = forecast7DayRow;
     }
 
     //create object for forecast data
@@ -245,7 +259,7 @@ function displayForecast(forecast,placeName) {
 
     dayDiv.appendChild(dayHeader);
     dayDiv.appendChild(dayDataDiv);
-    forecastDiv.appendChild(dayDiv);
+    parent.appendChild(dayDiv);
     appendToBody(forecastDiv);
   }
   scrollToForecast();
