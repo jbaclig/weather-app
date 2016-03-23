@@ -8505,63 +8505,91 @@ h3 {
 
 /* line 75, ../sass/screen.scss */
 #map {
+  width: 100%;
   height: 43%;
-  width: 60%;
 }
 
-/* line 80, ../sass/screen.scss */
+@media (min-width: 768px) {
+  /* line 81, ../sass/screen.scss */
+  #map {
+    width: 60%;
+    height: 43%;
+  }
+}
+@media (min-width: 992px) {
+  /* line 88, ../sass/screen.scss */
+  #map {
+    width: 60%;
+    height: 43%;
+  }
+}
+/*#map {
+  width: 100%;
+  height: 43%;
+
+  @media(min-width: $screen-sm-min){
+    width: 60%;
+    height: 43%;
+  }
+
+  @media(min-width: $screen-md-min) {
+    width: 60%;
+    height: 43%;
+  }
+}*/
+/* line 109, ../sass/screen.scss */
 #forecast, #map {
   margin-bottom: 10px;
 }
 
-/* line 84, ../sass/screen.scss */
+/* line 113, ../sass/screen.scss */
 .row {
   height: 50%;
 }
 
-/* line 90, ../sass/screen.scss */
+/* line 119, ../sass/screen.scss */
 #pac-input {
   margin-top: 10px;
   -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* line 96, ../sass/screen.scss */
+/* line 125, ../sass/screen.scss */
 .icon {
   font-size: 7.0rem;
   position: relative;
   height: 100px;
 }
 
-/* line 102, ../sass/screen.scss */
+/* line 131, ../sass/screen.scss */
 .clear-day::after {
   font-family: "iconvault";
   content: "\f113";
   color: #FFA500;
 }
 
-/* line 108, ../sass/screen.scss */
+/* line 137, ../sass/screen.scss */
 .fog::after {
   font-family: "iconvault";
   content: "\f108";
   color: #CCCCCC;
 }
 
-/* line 114, ../sass/screen.scss */
+/* line 143, ../sass/screen.scss */
 .cloudy::after {
   font-family: "iconvault";
   content: "\f106";
   color: #CCCCCC;
 }
 
-/* line 120, ../sass/screen.scss */
+/* line 149, ../sass/screen.scss */
 .clear-night::after {
   font-family: "iconvault";
   content: "\f10d";
   color: #DCCCFF;
 }
 
-/* line 126, ../sass/screen.scss */
+/* line 155, ../sass/screen.scss */
 .base-cloud::before {
   font-family: "iconvault";
   content: "\f105";
@@ -8570,7 +8598,7 @@ h3 {
   right: 25%;
 }
 
-/* line 134, ../sass/screen.scss */
+/* line 163, ../sass/screen.scss */
 .partly-cloudy::before {
   font-family: "iconvault";
   content: "\f106";
@@ -8579,7 +8607,7 @@ h3 {
   right: 25%;
 }
 
-/* line 142, ../sass/screen.scss */
+/* line 171, ../sass/screen.scss */
 .rain::before {
   font-family: "iconvault";
   content: "\f104";
@@ -8588,7 +8616,7 @@ h3 {
   right: 24%;
 }
 
-/* line 150, ../sass/screen.scss */
+/* line 179, ../sass/screen.scss */
 .snow::before {
   font-family: "iconvault";
   content: "\f10b";
@@ -8597,7 +8625,7 @@ h3 {
   right: 24%;
 }
 
-/* line 158, ../sass/screen.scss */
+/* line 187, ../sass/screen.scss */
 .sleet::before {
   font-family: "iconvault";
   content: "\f10c";
@@ -8606,7 +8634,7 @@ h3 {
   right: 25%;
 }
 
-/* line 166, ../sass/screen.scss */
+/* line 195, ../sass/screen.scss */
 .wind::before {
   font-family: "iconvault";
   content: "\f115";
@@ -8615,7 +8643,7 @@ h3 {
   right: 25%;
 }
 
-/* line 174, ../sass/screen.scss */
+/* line 203, ../sass/screen.scss */
 .day::after {
   font-family: "iconvault";
   content: "\f101";
@@ -8624,7 +8652,7 @@ h3 {
   right: 21%;
 }
 
-/* line 182, ../sass/screen.scss */
+/* line 211, ../sass/screen.scss */
 .night::after {
   font-family: "iconvault";
   content: "\f100";
@@ -8633,34 +8661,34 @@ h3 {
   right: 23%;
 }
 
-/* line 191, ../sass/screen.scss */
+/* line 220, ../sass/screen.scss */
 .forecast__today .base-cloud::before, .forecast__today .rain::before, .forecast__today .snow::before, .forecast__today .sleet::before,
 .forecast__today .partly-cloudy::before, .forecast__today .wind::before {
   right: 44%;
 }
-/* line 196, ../sass/screen.scss */
+/* line 225, ../sass/screen.scss */
 .forecast__today .day::after, .forecast__today .night::after {
   right: 42.5%;
 }
 
-/* line 201, ../sass/screen.scss */
+/* line 230, ../sass/screen.scss */
 .forecast__today {
   display: block;
 }
 
-/* line 205, ../sass/screen.scss */
+/* line 234, ../sass/screen.scss */
 .forecast__day {
   text-align: center;
   vertical-align: top;
   margin-bottom: 10px;
 }
 
-/* line 211, ../sass/screen.scss */
+/* line 240, ../sass/screen.scss */
 .forecast__day__header {
   text-align: center;
 }
 
-/* line 215, ../sass/screen.scss */
+/* line 244, ../sass/screen.scss */
 .forecast__day__data {
   font-size: 1.8rem;
 }
