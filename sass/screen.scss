@@ -25,6 +25,14 @@ $cloud-color: #CCCCCC;
 $rain-color: #82B2E4;
 $snow-color: #ACD3F3;
 
+//temperature colors
+$freezing-color: #0D47A1;
+$cold-color: #1976D2;
+$cool-color: #2196F3;
+$warm-color: #FFA500;
+$hot-color: #E64A19;
+$very-hot-color: #E53935;
+
 @font-face {
    font-family: "iconvault";
    src: url("../fonts/iconvault_forecastfont.eot");

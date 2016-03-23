@@ -186,13 +186,13 @@ function displayForecast(forecast,placeName) {
     if(i==0) {
       dayHeader = createHeader('h2',"Today");
       dayHeader.className = "forecast__day__header forecast__today__header";
-      dayDiv.className = " forecast__today col-md-3 col-md-offset-2";
+      dayDiv.className = " forecast__today col-xs-7 col-sm-3 col-sm-offset-2 col-md-3 col-md-offset-2";
       parent = forecastTodayRow;
     }
     else {
       dayHeader = createHeader('h3',currentDayName);
       dayHeader.className = "forecast__day__header";
-      dayDiv.className = "forcast__day col-md-1";
+      dayDiv.className = "forcast__day col-xs-7 col-sm-1 col-md-1";
       parent = forecast7DayRow;
     }
 
@@ -253,6 +253,12 @@ function displayForecast(forecast,placeName) {
     //weather summary
     var daySummary = document.createElement('p');
     daySummary.innerHTML= data.summary;
+
+    //sunrise, sunset and local times for background-color
+    var sunriseTimeHours = data.sunriseTime/3600;
+    var sunsetTimeHours = data.sunsetTime/3600;
+    var timeHours = data.time/3600;
+    console.log(timeHours,sunriseTimeHours,sunsetTimeHours);
 
     iconContainer.appendChild(icon);
     dayDataDiv.appendChild(iconContainer);
