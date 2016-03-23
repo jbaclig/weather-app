@@ -184,17 +184,17 @@ h3 {
   content: "\f100";
   color: $moon-color;
   position: absolute;
-  right: 21%;
+  right: 23%;
 }
 
 .forecast__today {
   .base-cloud::before, .rain::before, .snow::before, .sleet::before,
   .partly-cloudy::before, .wind::before {
-    right: 47%;
+    right: 44%;
   }
 
   .day::after, .night::after {
-    right: 46.5%;
+    right: 42.5%;
   }
 }
 
