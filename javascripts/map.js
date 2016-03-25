@@ -5,7 +5,9 @@ function initMap() {
     center: {lat: -34.397, lng: 150.644},
     zoom: 10,
     disableDoubleClickZoom: true,
-    scrollwheel: false
+    scrollwheel: false,
+    mapTypeControl: false,
+    streetViewControl: false
   });
 
   //Creat search box and link to UI element
