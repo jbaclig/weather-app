@@ -86,35 +86,6 @@ h3 {
   height: 20%;
 }
 
-@media(min-width: $screen-sm-min){
-  //sm map
-  #map {
-    width: 60%;
-    height: 43%;
-  }
-}
-
-@media(min-width: $screen-md-min){
-  //md map
-  #map {
-    width: 60%;
-    height:43%;
-  }
-}
-
-#forecast, #map {
-  margin-bottom: 10px;
-}
-
-
-
-//map
-
-#pac-input {
-  margin-top: 10px;
-  @include box-shadow(0 2px 6px rgba(0, 0, 0, 0.3))
-}
-
 //weather icons
 .icon {
   font-size: 7.0rem;
@@ -151,7 +122,7 @@ h3 {
   content: "\f105";
   color: $cloud-color;
   position: absolute;
-  right: 25%;
+  right: 45%;
 }
 
 .partly-cloudy::before {
@@ -159,7 +130,7 @@ h3 {
   content: "\f106";
   color: $cloud-color;
   position: absolute;
-  right: 25%;
+  right: 45%;
 }
 
 .rain::before {
@@ -167,7 +138,7 @@ h3 {
   content: "\f104";
   color: $rain-color;
   position: absolute;
-  right: 24%;
+  right: 45%;
 }
 
 .snow::before {
@@ -175,7 +146,7 @@ h3 {
   content: "\f10b";
   color: $snow-color;
   position: absolute;
-  right: 24%;
+  right: 45%;
 }
 
 .sleet::before {
@@ -183,7 +154,7 @@ h3 {
   content: "\f10c";
   color: $snow-color;
   position: absolute;
-  right: 25%;
+  right: 45%;
 }
 
 .wind::before {
@@ -191,7 +162,7 @@ h3 {
   content: "\f115";
   color: $cloud-color;
   position: absolute;
-  right: 25%;
+  right: 45%;
 }
 
 .day::after {
@@ -199,7 +170,7 @@ h3 {
   content: "\f101";
   color: $sun-color;
   position: absolute;
-  right: 21%;
+  right: 43%;
 }
 
 .night::after {
@@ -207,7 +178,7 @@ h3 {
   content: "\f100";
   color: $moon-color;
   position: absolute;
-  right: 23%;
+  right: 44%;
 }
 
 .forecast__today {
@@ -216,8 +187,12 @@ h3 {
     right: 44%;
   }
 
-  .day::after, .night::after {
+  .day::after {
     right: 42.5%;
+  }
+
+  .night::after {
+    right: 43%;
   }
 }
 
@@ -237,4 +212,56 @@ h3 {
 
 .forecast__day__data {
   font-size: 1.8rem;
+}
+
+@media(min-width: $screen-sm-min){
+  //sm map
+  #map {
+    width: 60%;
+    height: 43%;
+  }
+
+  //sm weather icons
+  .base-cloud::before {
+    right: 25%;
+  }
+
+  .partly-cloudy::before {
+    right: 25%;
+  }
+
+  .rain::before {
+    right: 24%;
+  }
+
+  .snow::before {
+    right: 24%;
+  }
+
+  .day::after {
+    right: 21%;
+  }
+
+  .night::after {
+    right: 23%;
+  }
+}
+
+@media(min-width: $screen-md-min){
+  //md map
+  #map {
+    width: 60%;
+    height:43%;
+  }
+
+  //md weather icons
+}
+
+#forecast, #map {
+  margin-bottom: 10px;
+}
+
+#pac-input {
+  margin-top: 10px;
+  @include box-shadow(0 2px 6px rgba(0, 0, 0, 0.3))
 }

@@ -188,13 +188,13 @@ function displayForecast(forecast,placeName) {
     if(i==0) {
       dayHeader = createHeader('h2',"Today");
       dayHeader.className = "forecast__day__header forecast__today__header";
-      dayDiv.className = " forecast__today col-xs-7 col-sm-3 col-sm-offset-2 col-md-3 col-md-offset-2";
+      dayDiv.className = " forecast__today col-xs-7 col-sm-3 col-sm-offset-2";
       parent = forecastTodayRow;
     }
     else {
       dayHeader = createHeader('h3',currentDayName);
       dayHeader.className = "forecast__day__header";
-      dayDiv.className = "forcast__day col-xs-7 col-sm-1 col-md-1";
+      dayDiv.className = "forcast__day col-xs-7 col-sm-1";
       parent = forecast7DayRow;
     }
 

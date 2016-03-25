@@ -8519,167 +8519,201 @@ h3 {
   height: 20%;
 }
 
-@media (min-width: 768px) {
-  /* line 91, ../sass/screen.scss */
-  #map {
-    width: 60%;
-    height: 43%;
-  }
-}
-@media (min-width: 992px) {
-  /* line 99, ../sass/screen.scss */
-  #map {
-    width: 60%;
-    height: 43%;
-  }
-}
-/* line 105, ../sass/screen.scss */
-#forecast, #map {
-  margin-bottom: 10px;
-}
-
-/* line 113, ../sass/screen.scss */
-#pac-input {
-  margin-top: 10px;
-  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-/* line 119, ../sass/screen.scss */
+/* line 90, ../sass/screen.scss */
 .icon {
   font-size: 7.0rem;
   position: relative;
   height: 100px;
 }
 
-/* line 125, ../sass/screen.scss */
+/* line 96, ../sass/screen.scss */
 .clear-day::after {
   font-family: "iconvault";
   content: "\f113";
   color: #FFA500;
 }
 
-/* line 131, ../sass/screen.scss */
+/* line 102, ../sass/screen.scss */
 .fog::after {
   font-family: "iconvault";
   content: "\f108";
   color: #CCCCCC;
 }
 
-/* line 137, ../sass/screen.scss */
+/* line 108, ../sass/screen.scss */
 .cloudy::after {
   font-family: "iconvault";
   content: "\f106";
   color: #CCCCCC;
 }
 
-/* line 143, ../sass/screen.scss */
+/* line 114, ../sass/screen.scss */
 .clear-night::after {
   font-family: "iconvault";
   content: "\f10d";
   color: #DCCCFF;
 }
 
-/* line 149, ../sass/screen.scss */
+/* line 120, ../sass/screen.scss */
 .base-cloud::before {
   font-family: "iconvault";
   content: "\f105";
   color: #CCCCCC;
   position: absolute;
-  right: 25%;
+  right: 45%;
 }
 
-/* line 157, ../sass/screen.scss */
+/* line 128, ../sass/screen.scss */
 .partly-cloudy::before {
   font-family: "iconvault";
   content: "\f106";
   color: #CCCCCC;
   position: absolute;
-  right: 25%;
+  right: 45%;
 }
 
-/* line 165, ../sass/screen.scss */
+/* line 136, ../sass/screen.scss */
 .rain::before {
   font-family: "iconvault";
   content: "\f104";
   color: #82B2E4;
   position: absolute;
-  right: 24%;
+  right: 45%;
 }
 
-/* line 173, ../sass/screen.scss */
+/* line 144, ../sass/screen.scss */
 .snow::before {
   font-family: "iconvault";
   content: "\f10b";
   color: #ACD3F3;
   position: absolute;
-  right: 24%;
+  right: 45%;
 }
 
-/* line 181, ../sass/screen.scss */
+/* line 152, ../sass/screen.scss */
 .sleet::before {
   font-family: "iconvault";
   content: "\f10c";
   color: #ACD3F3;
   position: absolute;
-  right: 25%;
+  right: 45%;
 }
 
-/* line 189, ../sass/screen.scss */
+/* line 160, ../sass/screen.scss */
 .wind::before {
   font-family: "iconvault";
   content: "\f115";
   color: #CCCCCC;
   position: absolute;
-  right: 25%;
+  right: 45%;
 }
 
-/* line 197, ../sass/screen.scss */
+/* line 168, ../sass/screen.scss */
 .day::after {
   font-family: "iconvault";
   content: "\f101";
   color: #FFA500;
   position: absolute;
-  right: 21%;
+  right: 43%;
 }
 
-/* line 205, ../sass/screen.scss */
+/* line 176, ../sass/screen.scss */
 .night::after {
   font-family: "iconvault";
   content: "\f100";
   color: #DCCCFF;
   position: absolute;
-  right: 23%;
+  right: 44%;
 }
 
-/* line 214, ../sass/screen.scss */
+/* line 185, ../sass/screen.scss */
 .forecast__today .base-cloud::before, .forecast__today .rain::before, .forecast__today .snow::before, .forecast__today .sleet::before,
 .forecast__today .partly-cloudy::before, .forecast__today .wind::before {
   right: 44%;
 }
-/* line 219, ../sass/screen.scss */
-.forecast__today .day::after, .forecast__today .night::after {
+/* line 190, ../sass/screen.scss */
+.forecast__today .day::after {
   right: 42.5%;
 }
+/* line 194, ../sass/screen.scss */
+.forecast__today .night::after {
+  right: 43%;
+}
 
-/* line 224, ../sass/screen.scss */
+/* line 199, ../sass/screen.scss */
 .forecast__today {
   display: block;
 }
 
-/* line 228, ../sass/screen.scss */
+/* line 203, ../sass/screen.scss */
 .forecast__day {
   text-align: center;
   vertical-align: top;
   margin-bottom: 10px;
 }
 
-/* line 234, ../sass/screen.scss */
+/* line 209, ../sass/screen.scss */
 .forecast__day__header {
   text-align: center;
 }
 
-/* line 238, ../sass/screen.scss */
+/* line 213, ../sass/screen.scss */
 .forecast__day__data {
   font-size: 1.8rem;
+}
+
+@media (min-width: 768px) {
+  /* line 219, ../sass/screen.scss */
+  #map {
+    width: 60%;
+    height: 43%;
+  }
+
+  /* line 225, ../sass/screen.scss */
+  .base-cloud::before {
+    right: 25%;
+  }
+
+  /* line 229, ../sass/screen.scss */
+  .partly-cloudy::before {
+    right: 25%;
+  }
+
+  /* line 233, ../sass/screen.scss */
+  .rain::before {
+    right: 24%;
+  }
+
+  /* line 237, ../sass/screen.scss */
+  .snow::before {
+    right: 24%;
+  }
+
+  /* line 241, ../sass/screen.scss */
+  .day::after {
+    right: 21%;
+  }
+
+  /* line 245, ../sass/screen.scss */
+  .night::after {
+    right: 23%;
+  }
+}
+@media (min-width: 992px) {
+  /* line 252, ../sass/screen.scss */
+  #map {
+    width: 60%;
+    height: 43%;
+  }
+}
+/* line 260, ../sass/screen.scss */
+#forecast, #map {
+  margin-bottom: 10px;
+}
+
+/* line 264, ../sass/screen.scss */
+#pac-input {
+  margin-top: 10px;
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
