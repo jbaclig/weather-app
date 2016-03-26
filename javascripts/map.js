@@ -206,7 +206,8 @@ function displayForecast(forecast,placeName) {
     //forecast icon
     var iconContainer = document.createElement('ul');
     iconContainer.className = "icon";
-    var iconDescription = data.icon;
+    //var iconDescription = data.icon;
+    var iconDescription = "partly-cloudy-night";
 
     var iconHtml;
     switch(iconDescription) {

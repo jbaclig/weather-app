@@ -122,7 +122,7 @@ h3 {
   content: "\f105";
   color: $cloud-color;
   position: absolute;
-  right: 45%;
+  right: 40%;
 }
 
 .partly-cloudy::before {
@@ -130,7 +130,7 @@ h3 {
   content: "\f106";
   color: $cloud-color;
   position: absolute;
-  right: 45%;
+  right: 40%;
 }
 
 .rain::before {
@@ -170,7 +170,7 @@ h3 {
   content: "\f101";
   color: $sun-color;
   position: absolute;
-  right: 43%;
+  right: 38%;
 }
 
 .night::after {
@@ -178,22 +178,7 @@ h3 {
   content: "\f100";
   color: $moon-color;
   position: absolute;
-  right: 44%;
-}
-
-.forecast__today {
-  .base-cloud::before, .rain::before, .snow::before, .sleet::before,
-  .partly-cloudy::before, .wind::before {
-    right: 44%;
-  }
-
-  .day::after {
-    right: 42.5%;
-  }
-
-  .night::after {
-    right: 43%;
-  }
+  right: 39%;
 }
 
 .forecast__today {
@@ -245,6 +230,22 @@ h3 {
   .night::after {
     right: 23%;
   }
+
+  .forecast__today {
+    .base-cloud::before, .rain::before, .snow::before, .sleet::before,
+    .partly-cloudy::before, .wind::before {
+      right: 44%;
+    }
+
+    .day::after {
+      right: 42.5%;
+    }
+
+    .night::after {
+      right: 43%;
+    }
+  }
+
 }
 
 @media(min-width: $screen-md-min){

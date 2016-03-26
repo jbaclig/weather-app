@@ -8560,7 +8560,7 @@ h3 {
   content: "\f105";
   color: #CCCCCC;
   position: absolute;
-  right: 45%;
+  right: 40%;
 }
 
 /* line 128, ../sass/screen.scss */
@@ -8569,7 +8569,7 @@ h3 {
   content: "\f106";
   color: #CCCCCC;
   position: absolute;
-  right: 45%;
+  right: 40%;
 }
 
 /* line 136, ../sass/screen.scss */
@@ -8614,7 +8614,7 @@ h3 {
   content: "\f101";
   color: #FFA500;
   position: absolute;
-  right: 43%;
+  right: 38%;
 }
 
 /* line 176, ../sass/screen.scss */
@@ -8623,95 +8623,95 @@ h3 {
   content: "\f100";
   color: #DCCCFF;
   position: absolute;
-  right: 44%;
+  right: 39%;
 }
 
-/* line 185, ../sass/screen.scss */
-.forecast__today .base-cloud::before, .forecast__today .rain::before, .forecast__today .snow::before, .forecast__today .sleet::before,
-.forecast__today .partly-cloudy::before, .forecast__today .wind::before {
-  right: 44%;
-}
-/* line 190, ../sass/screen.scss */
-.forecast__today .day::after {
-  right: 42.5%;
-}
-/* line 194, ../sass/screen.scss */
-.forecast__today .night::after {
-  right: 43%;
-}
-
-/* line 199, ../sass/screen.scss */
+/* line 184, ../sass/screen.scss */
 .forecast__today {
   display: block;
 }
 
-/* line 203, ../sass/screen.scss */
+/* line 188, ../sass/screen.scss */
 .forecast__day {
   text-align: center;
   vertical-align: top;
   margin-bottom: 10px;
 }
 
-/* line 209, ../sass/screen.scss */
+/* line 194, ../sass/screen.scss */
 .forecast__day__header {
   text-align: center;
 }
 
-/* line 213, ../sass/screen.scss */
+/* line 198, ../sass/screen.scss */
 .forecast__day__data {
   font-size: 1.8rem;
 }
 
 @media (min-width: 768px) {
-  /* line 219, ../sass/screen.scss */
+  /* line 204, ../sass/screen.scss */
   #map {
     width: 60%;
     height: 43%;
   }
 
-  /* line 225, ../sass/screen.scss */
+  /* line 210, ../sass/screen.scss */
   .base-cloud::before {
     right: 25%;
   }
 
-  /* line 229, ../sass/screen.scss */
+  /* line 214, ../sass/screen.scss */
   .partly-cloudy::before {
     right: 25%;
   }
 
-  /* line 233, ../sass/screen.scss */
+  /* line 218, ../sass/screen.scss */
   .rain::before {
     right: 24%;
   }
 
-  /* line 237, ../sass/screen.scss */
+  /* line 222, ../sass/screen.scss */
   .snow::before {
     right: 24%;
   }
 
-  /* line 241, ../sass/screen.scss */
+  /* line 226, ../sass/screen.scss */
   .day::after {
     right: 21%;
   }
 
-  /* line 245, ../sass/screen.scss */
+  /* line 230, ../sass/screen.scss */
   .night::after {
     right: 23%;
   }
+
+  /* line 235, ../sass/screen.scss */
+  .forecast__today .base-cloud::before, .forecast__today .rain::before, .forecast__today .snow::before, .forecast__today .sleet::before,
+  .forecast__today .partly-cloudy::before, .forecast__today .wind::before {
+    right: 44%;
+  }
+  /* line 240, ../sass/screen.scss */
+  .forecast__today .day::after {
+    right: 42.5%;
+  }
+  /* line 244, ../sass/screen.scss */
+  .forecast__today .night::after {
+    right: 43%;
+  }
 }
 @media (min-width: 992px) {
-  /* line 252, ../sass/screen.scss */
+  /* line 253, ../sass/screen.scss */
   #map {
     width: 60%;
     height: 43%;
   }
 }
-/* line 260, ../sass/screen.scss */
+/* line 261, ../sass/screen.scss */
 #forecast, #map {
   margin-bottom: 10px;
 }
 
-/* line 264, ../sass/screen.scss */
+/* line 265, ../sass/screen.scss */
 #pac-input {
   margin-top: 10px;
   -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
